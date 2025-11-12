@@ -165,11 +165,11 @@ vim.opt.softtabstop = 2 -- Number of spaces inserted for a <Tab>
 vim.opt.smartindent = true -- Smart autoindenting
 vim.opt.shellslash = true -- Changes the vim \ to /
 vim.opt.shadafile = 'NONE'
--- In insert mode: exit and save
-vim.keymap.set('i', 'jj', '<Esc>:update<CR>', { noremap = true, silent = true })
--- In terminal mode: exit to normal mode
-vim.keymap.set('t', 'jj', [[<C-\><C-n>]], { noremap = true, silent = true })
-
+vim.keymap.set('i', 'jj', '<Esc>:update<CR>', { noremap = true, silent = true }) -- In insert mode: exit and save
+vim.keymap.set('t', 'jj', [[<C-\><C-n>]], { noremap = true, silent = true })-- In terminal mode: exit to normal mode
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
+vim.o.timeoutlen = 500 -- 500ms window for jj
 vim.api.nvim_set_keymap('i', '<C-H>', '<C-w>', { noremap = true, silent = true }) -- Ctrl+Backspace: delete next word, stay in insert mode
 vim.api.nvim_set_keymap('i', '<C-Del>', '<C-o>dw', { noremap = true, silent = true }) -- Ctrl+Delete: delete next word, stay in insert mode
 vim.api.nvim_set_keymap('t', '<C-H>', '<C-w>', { noremap = true, silent = true }) -- Ctrl+Backspace: delete next word, stay in terminal mode
@@ -193,7 +193,6 @@ vim.o.confirm = true
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')     
-vim.o.timeoutlen = 500 -- 300ms window for jj (adjust as you like)
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
