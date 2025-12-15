@@ -598,14 +598,17 @@ require('lazy').setup({
         dependencies = {
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
-          --    https://github.com/rafamadriz/friendly-snippets
+             -- https://github.com/rafamadriz/friendly-snippets
           -- {
-          --   'rafamadriz/friendly-snippets',
+            'rafamadriz/friendly-snippets',
           --   config = function()
           --     require('luasnip.loaders.from_vscode').lazy_load()
           --   end,
           -- },
         },
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
         opts = {},
       },
       'folke/lazydev.nvim',
@@ -697,7 +700,34 @@ require('lazy').setup({
       vim.cmd.colorscheme 'tokyonight-night'
     end,
   },
+{
+  "catppuccin/nvim",
+  name = "catppuccin",
+  priority = 1000,
+  config = function()
+    require("catppuccin").setup({
+      flavour = "mocha", -- dark mode
+      integrations = { treesitter = true, telescope = true },
+    })
+    vim.cmd.colorscheme "catppuccin"
+  end
+},
 
+{
+  "rebelot/kanagawa.nvim",
+  priority = 1000,
+  config = function()
+    require("kanagawa").setup({ commentStyle = { italic = false } })
+    vim.cmd.colorscheme "kanagawa"
+  end
+},
+{
+  "savq/melange-nvim",
+  priority = 1000,
+  config = function()
+    vim.cmd.colorscheme "melange"
+  end
+},
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
