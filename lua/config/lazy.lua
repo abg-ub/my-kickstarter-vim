@@ -1,4 +1,3 @@
-
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -76,7 +75,7 @@ require('lazy').setup({
   -- Then, because we use the `opts` key (recommended), the configuration runs
   -- after the plugin has been loaded as `require(MODULE).setup(opts)`.
 
-  {                     -- Useful plugin to show you pending keybinds.
+  { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
@@ -164,7 +163,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -286,12 +285,12 @@ require('lazy').setup({
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim',    opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
 
       -- Allows extra capabilities provided by blink.cmp
-      {'saghen/blink.cmp', opts={
-        signature = {enabled = true}
-      }},
+      { 'saghen/blink.cmp', opts = {
+        signature = { enabled = true },
+      } },
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -598,17 +597,17 @@ require('lazy').setup({
         dependencies = {
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
-             -- https://github.com/rafamadriz/friendly-snippets
+          -- https://github.com/rafamadriz/friendly-snippets
           -- {
-            'rafamadriz/friendly-snippets',
+          'rafamadriz/friendly-snippets',
           --   config = function()
           --     require('luasnip.loaders.from_vscode').lazy_load()
           --   end,
           -- },
         },
-            config = function()
-              require('luasnip.loaders.from_vscode').lazy_load()
-            end,
+        config = function()
+          require('luasnip.loaders.from_vscode').lazy_load()
+        end,
         opts = {},
       },
       'folke/lazydev.nvim',
@@ -700,34 +699,34 @@ require('lazy').setup({
       vim.cmd.colorscheme 'tokyonight-night'
     end,
   },
-{
-  "catppuccin/nvim",
-  name = "catppuccin",
-  priority = 1000,
-  config = function()
-    require("catppuccin").setup({
-      flavour = "mocha", -- dark mode
-      integrations = { treesitter = true, telescope = true },
-    })
-    vim.cmd.colorscheme "catppuccin"
-  end
-},
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    config = function()
+      require('catppuccin').setup {
+        flavour = 'mocha', -- dark mode
+        integrations = { treesitter = true, telescope = true },
+      }
+      vim.cmd.colorscheme 'catppuccin'
+    end,
+  },
 
-{
-  "rebelot/kanagawa.nvim",
-  priority = 1000,
-  config = function()
-    require("kanagawa").setup({ commentStyle = { italic = false } })
-    vim.cmd.colorscheme "kanagawa"
-  end
-},
-{
-  "savq/melange-nvim",
-  priority = 1000,
-  config = function()
-    vim.cmd.colorscheme "melange"
-  end
-},
+  {
+    'rebelot/kanagawa.nvim',
+    priority = 1000,
+    config = function()
+      require('kanagawa').setup { commentStyle = { italic = false } }
+      vim.cmd.colorscheme 'kanagawa'
+    end,
+  },
+  {
+    'savq/melange-nvim',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'melange'
+    end,
+  },
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -771,7 +770,8 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
+    -- main = 'nvim-treesitter.configs', -- Sets main module to use for opts
+    lazy = false, -- load immediately so require('nvim-treesitter.configs') works
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
