@@ -153,26 +153,28 @@ vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- custom config
-vim.opt.number = true                                                            -- show absolute line numbers
-vim.opt.relativenumber = true                                                    -- show relative numbers
-vim.opt.signcolumn = 'yes'                                                       -- always show sign column
-vim.opt.numberwidth = 4                                                          -- fix width of number column (adjust 4→5 if you have huge files)
+vim.opt.number = true -- show absolute line numbers
+vim.opt.relativenumber = true -- show relative numbers
+vim.opt.signcolumn = 'yes' -- always show sign column
+vim.opt.numberwidth = 4 -- fix width of number column (adjust 4→5 if you have huge files)
 vim.fn.system('rm -f ' .. vim.fn.stdpath 'data' .. '/swap/*')
-vim.opt.tabstop = 2                                                              -- Number of spaces a <Tab> counts for
-vim.opt.shiftwidth = 2                                                           -- Size of an indent
-vim.opt.expandtab = true                                                         -- Use spaces instead of tabs
-vim.opt.softtabstop = 2                                                          -- Number of spaces inserted for a <Tab>
-vim.opt.smartindent = true                                                       -- Smart autoindenting
-vim.opt.shellslash = true                                                        -- Changes the vim \ to /
+vim.opt.tabstop = 2 -- Number of spaces a <Tab> counts for
+vim.opt.shiftwidth = 2 -- Size of an indent
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.softtabstop = 2 -- Number of spaces inserted for a <Tab>
+vim.opt.smartindent = true -- Smart autoindenting
+vim.opt.shellslash = true -- Changes the vim \ to /
 vim.opt.shadafile = 'NONE'
 vim.keymap.set('i', 'jj', '<Esc>:update<CR>', { noremap = true, silent = true }) -- In insert mode: exit and save
-vim.keymap.set('t', 'jj', [[<C-\><C-n>]], { noremap = true, silent = true })     -- In terminal mode: exit to normal mode
+vim.keymap.set('t', 'jj', [[<C-\><C-n>]], { noremap = true, silent = true }) -- In terminal mode: exit to normal mode
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
-vim.o.timeoutlen = 500                                                                -- 500ms window for jj
-vim.api.nvim_set_keymap('i', '<C-H>', '<C-w>', { noremap = true, silent = true })     -- Ctrl+Backspace: delete next word, stay in insert mode
+vim.o.timeoutlen = 500 -- 500ms window for jj
+vim.api.nvim_set_keymap('i', '<C-H>', '<C-w>', { noremap = true, silent = true }) -- Ctrl+Backspace: delete next word, stay in insert mode
+vim.api.nvim_set_keymap('i', '<C-BS>', '<C-w>', { noremap = true, silent = true }) -- Ctrl+Backspace: delete next word, stay in insert mode
 vim.api.nvim_set_keymap('i', '<C-Del>', '<C-o>dw', { noremap = true, silent = true }) -- Ctrl+Delete: delete next word, stay in insert mode
-vim.api.nvim_set_keymap('t', '<C-H>', '<C-w>', { noremap = true, silent = true })     -- Ctrl+Backspace: delete next word, stay in terminal mode
+vim.api.nvim_set_keymap('t', '<C-H>', '<C-w>', { noremap = true, silent = true }) -- Ctrl+Backspace: delete next word, stay in terminal mode
+vim.api.nvim_set_keymap('t', '<C-BS>', '<C-w>', { noremap = true, silent = true }) -- Ctrl+Backspace: delete next word, stay in terminal mode
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
 
@@ -238,7 +240,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
-require("config.lazy")
+require 'config.lazy'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
